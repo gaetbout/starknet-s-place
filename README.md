@@ -13,7 +13,7 @@ For more  details check the Actions tab of this GitHub repository.
 
 
 # TODO
-
+Refactoring to use the extensibilty pattern of OZ  https://github.com/OpenZeppelin/cairo-contracts/blob/main/docs/Extensibility.md
 ## 📄 License
 
 **starknet-r-place** is released under the [MIT](LICENSE).

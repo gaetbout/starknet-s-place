@@ -4,7 +4,7 @@ import time
 import pytest
 from starkware.starknet.testing.starknet import Starknet
 
-CONTRACT_FILE = os.path.join("contracts", "Storage.cairo")
+CONTRACT_FILE = os.path.join("contracts", "storage.cairo")
 
 @pytest.fixture(scope="session")
 async def contract(starknet):
