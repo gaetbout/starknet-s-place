@@ -25,7 +25,7 @@ async def test_join_to_outside(contract):
     
 @pytest.mark.asyncio
 async def assert_valid_felt_outside(contract):
-    await assert_revert(contract.generate_mask(35).invoke(), "Error out of bound")
+    await assert_revert(contract.generate_get_mask(35).invoke(), "Error out of bound")
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("position, result",[
@@ -37,14 +37,14 @@ async def assert_valid_felt_outside(contract):
     (30,208979078779793167353681086184783514132807454935464642645273346048),
     (34,56097394306713702464269695648587662877522613725800901920360996891040677888)
 ])
-async def test_generate_mask(contract, position, result):
-    execution_info = await contract.generate_mask(position).invoke()
+async def test_generate_get_mask(contract, position, result):
+    execution_info = await contract.generate_get_mask(position).invoke()
     assert execution_info.result.mask == result
 
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("input, position, result",[
-    (128,1,1),
+    (129,0,1),
     (128,0,0),
     (255,0,127),
     (56097394306713702464269695648587662877522613725800901920360996891040677888, 34, 127),
@@ -52,4 +52,19 @@ async def test_generate_mask(contract, position, result):
 ])
 async def test_view_get_element_at(contract, input, position, result):
     execution_info = await contract.view_get_element_at(input, position).invoke()
+    assert execution_info.result.response == result
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("input, position, element, result",[
+    (0,0,127,127),
+    (0,1,127,16256),
+    (0,5,127,4363686772736),
+    (0,10,127,149935135831111235534848),
+    (0,20,127,177012165013336821185939763789146369453719552),
+    (0,30,127,208979078779793167353681086184783514132807454935464642645273346048),
+    (0,34,127,56097394306713702464269695648587662877522613725800901920360996891040677888),
+])
+async def test_view_set_element_at(contract, input, position, element, result):
+    execution_info = await contract.view_set_element_at(input, position, element).invoke()
     assert execution_info.result.response == result
