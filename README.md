@@ -1,5 +1,5 @@
 # starknet-r-place
-![Tests]([https://github.com/gaetbout/starknet-r-place/actions/workflows/nile-tests.yml/badge.svg])
+![Tests](https://github.com/gaetbout/starknet-r-place/actions/workflows/nile-tests.yml/badge.svg)
 
 TODO description
 
