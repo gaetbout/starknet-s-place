@@ -2,7 +2,6 @@ import os
 
 import time
 import pytest
-from starkware.starknet.testing.starknet import Starknet
 
 CONTRACT_FILE = os.path.join("contracts", "storage.cairo")
 

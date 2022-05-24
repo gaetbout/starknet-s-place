@@ -27,7 +27,6 @@ func view_set_element_at{
     assert_valid_felt(element)
     let (mask) = generate_set_mask(at)
     let (masked_intermediate_response) = bitwise_and(mask, input)
-    assert masked_intermediate_response = 0
     let (multiplier) = pow2(at * SIZE)
     let multiplied_element = element * multiplier
     let (response) = bitwise_or(masked_intermediate_response, multiplied_element)

@@ -1,8 +1,6 @@
 import os
 
-import time
 import pytest
-from starkware.starknet.testing.starknet import Starknet
 from utils import assert_revert
 
 CONTRACT_FILE = os.path.join("contracts", "uint_packed.cairo")
@@ -66,5 +64,13 @@ async def test_view_get_element_at(contract, input, position, result):
     (0,34,127,56097394306713702464269695648587662877522613725800901920360996891040677888),
 ])
 async def test_view_set_element_at(contract, input, position, element, result):
+    execution_info = await contract.view_set_element_at(input, position, element).invoke()
+    assert execution_info.result.response == result
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("input, position, element, result",[
+    (4398046510976,0,127,4398046511103),
+])
+async def test_view_set_element_at_with_previous_value(contract, input, position, element, result):
     execution_info = await contract.view_set_element_at(input, position, element).invoke()
     assert execution_info.result.response == result
