@@ -2,7 +2,9 @@ import os
 
 import pytest
 from utils import assert_revert
-
+# For bit  calculations I used:
+# https://www.exploringbinary.com/binary-converter/ 
+# https://string-functions.com/length.aspx
 CONTRACT_FILE = os.path.join("contracts", "uint_packed.cairo")
 
 @pytest.fixture(scope="session")
@@ -70,6 +72,8 @@ async def test_view_set_element_at(contract, input, position, element, result):
 @pytest.mark.asyncio
 @pytest.mark.parametrize("input, position, element, result",[
     (4398046510976,0,127,4398046511103),
+    (56097394306713702464269695648587662877522613725800901920360996891040677888,34,0,0),
+    (56097394306713702464269695648587662877522613725800901920360996891040677888,33,12,56138804784794445846994304183761325030237320379633924239691972036383473664),
 ])
 async def test_view_set_element_at_with_previous_value(contract, input, position, element, result):
     execution_info = await contract.view_set_element_at(input, position, element).invoke()
