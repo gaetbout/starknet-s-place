@@ -1,6 +1,7 @@
 %lang starknet
 from starkware.cairo.common.cairo_builtins import HashBuiltin, BitwiseBuiltin
-from starkware.cairo.common.bool import TRUE, FALSE
+from starkware.cairo.common.alloc import alloc
+from starkware.cairo.common.bool import TRUE
 from starkware.cairo.common.bitwise import bitwise_and, bitwise_or
 from starkware.cairo.common.math_cmp import is_le
 from contracts.pow2 import pow2
@@ -8,6 +9,7 @@ from contracts.pow2 import pow2
 const SIZE = 8
 const ALL_ONES = 2 ** 251 - 1
 const MAX = 252
+const MAX_PER_FELT = 31
 
 @view
 func view_get_element_at{
@@ -33,7 +35,6 @@ func view_set_element_at{
     return (response)
 end
 
-@view
 func generate_get_mask{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
     at : felt
 ) -> (mask : felt):
@@ -44,7 +45,6 @@ func generate_get_mask{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_c
     return (mask)
 end
 
-@view
 func generate_set_mask{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
     at : felt
 ) -> (mask : felt):
@@ -55,8 +55,6 @@ func generate_set_mask{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_c
     return (mask)
 end
 
-# TODO remove view
-@view
 func assert_valid_felt{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
     element : felt
 ):
@@ -75,4 +73,23 @@ func assert_valid_at{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_che
         assert is_bigger = TRUE
     end
     return ()
+end
+
+func decompose{
+    bitwise_ptr : BitwiseBuiltin*, syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr
+}(felt_to_decompose) -> (arr_len : felt, arr : felt*):
+    alloc_locals
+    let (local arr : felt*) = alloc()
+    return decompose_recursive(felt_to_decompose, 0, arr)
+end
+
+func decompose_recursive{
+    bitwise_ptr : BitwiseBuiltin*, syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr
+}(felt_to_decompose, arr_len, arr : felt*) -> (arr_len : felt, arr : felt*):
+    if arr_len == MAX_PER_FELT:
+        return (arr_len, arr)
+    end
+    let (current_value) = view_get_element_at(felt_to_decompose, arr_len)
+    assert arr[arr_len] = current_value
+    return decompose_recursive(felt_to_decompose, arr_len + 1, arr)
 end

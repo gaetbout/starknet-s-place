@@ -34,6 +34,20 @@ func view_get_player_timeleft{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, 
     return (player_last_timestamp + ELAPSED_TIME - current_timestamp)
 end
 
+@view
+func view_get_board{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(params) -> (
+    returns
+):
+    return (res)
+end
+
+func view_get_board_recursive{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
+    params
+) -> (returns):
+    # TODO FINISH HERE
+    return (res)
+end
+
 @external
 func play{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(x, y, color):
     alloc_locals
@@ -47,6 +61,7 @@ func play{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(x, 
     let position = (y * Y_MAX) + x
     let (quotient, remainder) = unsigned_div_rem(position, MAX_COLOR_PER_FELT)
     let (current_felt_stored) = position_colors_storage.read(quotient)
+    # TODO emit event!
     return ()
 end
 
