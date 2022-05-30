@@ -1,13 +1,19 @@
 # starknet-r-place
 ![Tests](https://github.com/gaetbout/starknet-r-place/actions/workflows/nile-tests.yml/badge.svg)
 
-# TODO 
+## Description
+integer packing, store multiple integer in the same felt.  
+I had to make a concession ==> 8 bits ==> 256 colors  
+Lib ot handle 10 bits coming later.  
+POC to show a use case of it  
+
+## TODO 
 
  + Description  
  + Decompose meth to have all in 1 array
  + encode all?
  + time until next block that can be put
- + uncopressed and compressed size? ==> not in the contract
+ + uncompressed and compressed size? ==> not in the contract
  + Refactoring to use the extensibilty/proxy pattern of OZ  https://github.com/OpenZeppelin/cairo-contracts/blob/main/docs/Extensibility.md
 
 ## 🌡️ Test
