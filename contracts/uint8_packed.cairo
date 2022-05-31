@@ -69,7 +69,7 @@ end
 func assert_valid_at{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(at : felt):
     let max = at * SIZE
     let (is_bigger) = is_le(max, MAX - SIZE - 1)
-    with_attr error_message("Error out of bound"):
+    with_attr error_message("Error out of bound at: {at}"):
         assert is_bigger = TRUE
     end
     return ()

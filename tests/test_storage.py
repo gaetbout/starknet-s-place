@@ -11,10 +11,11 @@ async def contract(starknet):
   
 @pytest.mark.asyncio
 async def test_view_get_up_to(contract ):
+    # Used  for tests purposes
     numbers = []
     print("\nStarting generation")
     print(time.time())
-    limit = 1666
+    limit = 100
     for x in range(limit):
         numbers.append(x)
         await contract.at_put(x, x).invoke()
