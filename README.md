@@ -2,17 +2,17 @@
 ![Tests](https://github.com/gaetbout/starknet-r-place/actions/workflows/nile-tests.yml/badge.svg)
 
 ## Description
-integer packing, store multiple integer in the same felt.  
-I had to make a concession ==> 8 bits ==> 256 colors  
-Lib ot handle 10 bits coming later.  
-POC to show a use case of it  
+Uint128, Uint256, Uint1024. Ok I get it... We  can do big integers.  
+But why not going smaller?  
+What about uint8, uint16, ... 
 
+To demonstrate this is working I tried to make a simple proof of concept based on the [reddit game: r/place](https://www.reddit.com/r/place/).  
+It follow the same simple rule which is that a user can put a pixel every 5 minutes. For memory reason, I had to limit the colors to be encoded to 8 bits (which provides 256 colors).
+
+I should be releasing another library to support uint10, uint16, any uint basically!
 ## TODO 
 
- + Description  
- + Decompose meth to have all in 1 array
  + encode all?
- + time until next block that can be put
  + uncompressed and compressed size? ==> not in the contract
  + Refactoring to use the extensibilty/proxy pattern of OZ  https://github.com/OpenZeppelin/cairo-contracts/blob/main/docs/Extensibility.md
 
