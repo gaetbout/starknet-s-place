@@ -16,7 +16,7 @@ async def assert_revert(fun, reverted_with=None):
 
 def set_block_timestamp(starknet_state, block_timestamp):
     starknet_state.block_info = BlockInfo(
-        starknet_state.block_info.block_number, block_timestamp, starknet_state.block_info.gas_price)
+        block_number=starknet_state.block_info.block_number, block_timestamp=block_timestamp, gas_price=starknet_state.block_info.gas_price)
 
 def assert_event_emitted(tx_exec_info, from_address, name, data):
     assert Event(
