@@ -1,0 +1,144 @@
+[
+    {
+        "inputs": [
+            {
+                "name": "input",
+                "type": "felt"
+            },
+            {
+                "name": "at",
+                "type": "felt"
+            }
+        ],
+        "name": "view_get_element_at",
+        "outputs": [
+            {
+                "name": "response",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "input",
+                "type": "felt"
+            },
+            {
+                "name": "at",
+                "type": "felt"
+            },
+            {
+                "name": "element",
+                "type": "felt"
+            }
+        ],
+        "name": "view_set_element_at",
+        "outputs": [
+            {
+                "name": "response",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "data": [
+            {
+                "name": "address",
+                "type": "felt"
+            },
+            {
+                "name": "x",
+                "type": "felt"
+            },
+            {
+                "name": "y",
+                "type": "felt"
+            },
+            {
+                "name": "color",
+                "type": "felt"
+            }
+        ],
+        "keys": [],
+        "name": "PlayerPlayedAt",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "name": "address",
+                "type": "felt"
+            }
+        ],
+        "name": "view_get_player_timeleft",
+        "outputs": [
+            {
+                "name": "timestamp",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "view_total_number_of_felt",
+        "outputs": [
+            {
+                "name": "total_number_of_felt",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "offset",
+                "type": "felt"
+            },
+            {
+                "name": "batch_size",
+                "type": "felt"
+            }
+        ],
+        "name": "view_get_board",
+        "outputs": [
+            {
+                "name": "arr_len",
+                "type": "felt"
+            },
+            {
+                "name": "arr",
+                "type": "felt*"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "x",
+                "type": "felt"
+            },
+            {
+                "name": "y",
+                "type": "felt"
+            },
+            {
+                "name": "color",
+                "type": "felt"
+            }
+        ],
+        "name": "play",
+        "outputs": [],
+        "type": "function"
+    }
+]
