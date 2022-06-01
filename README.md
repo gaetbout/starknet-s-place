@@ -1,5 +1,5 @@
-# starknet-r-place
-![Tests](https://github.com/gaetbout/starknet-r-place/actions/workflows/nile-tests.yml/badge.svg)
+# starknet-s-place
+![Tests](https://github.com/gaetbout/starknet-s-place/actions/workflows/nile-tests.yml/badge.svg)
 
 ## Description
 Uint128, Uint256, Uint1024. Ok I get it... We  can do big integers.  
@@ -27,7 +27,7 @@ For more  details check the Actions tab of this GitHub repository.
 
 ## 📄 License
 
-**starknet-r-place** is released under the [MIT](LICENSE).
+**starknet-s-place** is released under the [MIT](LICENSE).
 
 
 
