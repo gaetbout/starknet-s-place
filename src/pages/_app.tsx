@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <StarknetProvider autoConnect connectors={connectors}>
       <NextHead>
         <title>place</title>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet"></link>
         <link rel="shortcut icon" href="/favicon.ico" />
       </NextHead>
       <Component {...pageProps} />

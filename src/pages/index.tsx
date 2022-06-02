@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 
   return (
     <div >
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', fontFamily: 'Rubik, sans-serif' }}>
         <div style={{ width: '1400px' }}>
           <Board /></div>
         <div style={{ backgroundColor: '#2d2d6d', color: '#f1ecee', paddingLeft: '20px', height: '100vh' }}>
