@@ -26,14 +26,14 @@ export function Board() {
 
     const megaBoard = useMemo(() => {
         if (board1Result && board1Result.length > 0 && board2Result && board2Result.length > 0 && board3Result && board3Result.length > 0) {
-            return (board1Result.arr.concat(board2Result.arr).concat(board3Result.arr))
+            return (board1Result.arr.concat(board2Result.arr).concat(board3Result.arr)).slice(0, 10000)
         }
     }, [board1Result, board2Result, board3Result])
 
     return (
-        <div style={{ width: '1200px', marging: '0px' }}>
+        <div style={{ marging: '0px' }}>
             {megaBoard?.map((val, index) => (
-                <div style={{ display: 'inline-block', width: '12px', height: '12px' }} key={index}>{val.toString()}</div>
+                <div style={{ display: 'inline-block', width: '14px', height: '14px' }} key={index}>{val.toString()}</div>
             ))}
         </div>
     )

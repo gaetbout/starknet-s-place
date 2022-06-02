@@ -12,17 +12,20 @@ const Home: NextPage = () => {
   const { contract } = useSPlaceContract()
 
   return (
-    <div>
-      <h2>Wallet</h2>
-      <ConnectWallet />
-      <h2>S_Place Contract</h2>
-      <p>Address: {contract?.address}</p>
-      <Board />
-      <Timeleft />
-      <Play />
-      <h2>Recent Transactions</h2>
-      <TransactionList />
-    </div>
+    <div >
+      <div style={{ display: 'flex' }}>
+        <div style={{ width: '1400px' }}>
+          <Board /></div>
+        <div style={{ paddingLeft: '20px' }}>
+          <h2>Wallet</h2>
+          <ConnectWallet />
+          <h2>S_Place Contract</h2>
+          <p>{contract?.address}</p>
+          <Timeleft />
+          <Play />
+          <h2>Recent Transactions</h2>
+          <TransactionList /></div></div>
+    </div >
   )
 }
 
