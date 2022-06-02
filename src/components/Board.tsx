@@ -29,6 +29,13 @@ export function Board() {
         }
     }, [board1Result, board2Result, board3Result])
 
+    if (!megaBoard) {
+
+        return <div style={{
+            display: 'flex', justifyContent: 'center', height: '100vh'
+        }}> <img src="/loading.svg" /></div >
+    }
+
     return (
         <div style={{ marging: '0px' }}>
             {megaBoard?.map((val, index) => (

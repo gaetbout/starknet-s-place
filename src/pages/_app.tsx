@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     document.body.style.padding = "0";
     document.body.style.border = "0";
     document.body.style.fontSize = "100%";
+    document.body.style.backgroundColor = "#f1ecee";
   }, []);
 
   return (
