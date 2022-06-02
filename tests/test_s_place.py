@@ -2,7 +2,7 @@ import os
 import pytest
 from utils import assert_revert, set_block_timestamp, assert_event_emitted
 
-CONTRACT_FILE = os.path.join("contracts", "r_place.cairo")
+CONTRACT_FILE = os.path.join("contracts", "s_place.cairo")
 VALID_NR = 9
 pytest.user_address = 100
 X = 99

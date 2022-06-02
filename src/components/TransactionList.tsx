@@ -5,7 +5,7 @@ function TransactionItem({ transaction }: { transaction: Transaction }) {
   return (
     <span>
       <a href={`https://goerli.voyager.online/tx/${transaction.transactionHash}`}>
-        {transaction.metadata.method}: {transaction.metadata.message} - {transaction.status}
+        {transaction.metadata}: {transaction.metadata.message} - {transaction.status}
       </a>
     </span>
   )

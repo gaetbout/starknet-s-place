@@ -48,7 +48,7 @@ end
 func at_put{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
     at : felt, value : felt
 ):
-    # TODO Ensure caller is r_place logic
+    # TODO Ensure caller is S_place logic
     # let (caller_address) = get_caller_address()
     value_storage.write(at, value)
     # TODO Emit an event

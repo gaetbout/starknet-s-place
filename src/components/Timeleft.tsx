@@ -1,10 +1,10 @@
 import { useStarknet, useStarknetCall } from '@starknet-react/core'
 import React, { useMemo } from 'react'
-import { useRPlaceContract } from '~/hooks/r_place'
+import { useSPlaceContract } from '~/hooks/s_place'
 
 export function Timeleft() {
     const { account } = useStarknet()
-    const { contract } = useRPlaceContract()
+    const { contract } = useSPlaceContract()
     const { data, loading, error, refresh } = useStarknetCall({
         contract,
         method: 'view_get_player_timeleft',
