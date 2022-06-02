@@ -1,6 +1,4 @@
-import { useStarknetCall } from '@starknet-react/core'
 import type { NextPage } from 'next'
-import { useMemo } from 'react'
 import { ConnectWallet } from '~/components/ConnectWallet'
 import { Timeleft } from '~/components/Timeleft'
 import { Board } from '~/components/Board'
@@ -16,7 +14,7 @@ const Home: NextPage = () => {
       <div style={{ display: 'flex' }}>
         <div style={{ width: '1400px' }}>
           <Board /></div>
-        <div style={{ paddingLeft: '20px' }}>
+        <div style={{ backgroundColor: '#2d2d6d', color: '#f1ecee', paddingLeft: '20px', height: '100vh' }}>
           <h2>Wallet</h2>
           <ConnectWallet />
           <h2>S_Place Contract</h2>
