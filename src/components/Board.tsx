@@ -1,6 +1,5 @@
 import { useStarknetCall } from '@starknet-react/core'
 import { useMemo } from 'react'
-import React, { useCallback, useState } from 'react'
 import { useStarknet, useStarknetInvoke } from '@starknet-react/core'
 import { useSPlaceContract } from '~/hooks/s_place'
 
@@ -56,9 +55,13 @@ export function Board() {
         */
     function changeBackground(e) {
         e.target.style.background = 'red';
+        e.target.style.width = '15px';
+        e.target.style.height = '15px';
     }
     function changeBackgroundOriginal(e) {
         e.target.style.background = '#f1ecee';
+        e.target.style.width = '14px';
+        e.target.style.height = '14px';
     }
 
     return (

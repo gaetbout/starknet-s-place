@@ -4,6 +4,50 @@ body {
     padding: 0;
     border: 0;
     font-size: 100%;
-    background-color: #f1ecee;
+    box-sizing: border-box;
+    background-color: var(--color-white);
     font-family: 'Rubik', sans-serif;
+}
+
+:root {
+    --color-red: #ec1840;
+    --color-white: #f1ecee;
+    --color-blue: #2d2d6d;
+    --speed-normal: 0.5s;
+    --speed-fast: 0.3s;
+}
+
+button {
+    position: relative;
+    width: 180px;
+    height: 60px;
+    margin: 20px;
+    line-height: 60px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-blue);
+    transition: var(--speed-normal);
+    border: 1px solid var(--color-red);
+}
+
+button:hover {
+    border: 1px solid transparent;
+    background: var(--color-red) url(https://i.postimg.cc/wBXGXbWN/pixel.png);
+    transition-delay: 0.8s;
+    background-size: 180px;
+    animation: animate var(--speed-fast) steps(8) forwards;
+}
+
+
+
+@keyframes animate {
+    0% {
+        background-position-y: 0;
+    }
+
+    100% {
+        background-position-y: -480px;
+    }
 }
