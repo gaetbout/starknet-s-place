@@ -1,17 +1,9 @@
 import type { AppProps } from 'next/app'
 import NextHead from 'next/head'
-import { useEffect } from 'react';
 import { InjectedConnector, StarknetProvider } from '@starknet-react/core'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const connectors = [new InjectedConnector()]
-  useEffect(() => {
-    document.body.style.margin = "0";
-    document.body.style.padding = "0";
-    document.body.style.border = "0";
-    document.body.style.fontSize = "100%";
-    document.body.style.backgroundColor = "#f1ecee";
-  }, []);
 
   return (
     <StarknetProvider autoConnect connectors={connectors}>
@@ -19,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>place</title>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet"></link>
         <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="styles.css" />
       </NextHead>
       <Component {...pageProps} />
     </StarknetProvider>

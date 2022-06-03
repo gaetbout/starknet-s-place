@@ -1,9 +1,13 @@
 import { useStarknetCall } from '@starknet-react/core'
 import { useMemo } from 'react'
+import React, { useCallback, useState } from 'react'
+import { useStarknet, useStarknetInvoke } from '@starknet-react/core'
 import { useSPlaceContract } from '~/hooks/s_place'
 
 export function Board() {
     const { contract } = useSPlaceContract()
+    const { account } = useStarknet()
+    const { loading, error, reset, invoke } = useStarknetInvoke({ contract, method: 'play' })
 
     const { data: board1Result } = useStarknetCall({
         contract,
@@ -30,16 +34,38 @@ export function Board() {
     }, [board1Result, board2Result, board3Result])
 
     if (!megaBoard) {
-
         return <div style={{
             display: 'flex', justifyContent: 'center', height: '100vh'
         }}> <img src="/loading.svg" /></div >
     }
 
+    const onPlay = ((e) => {
+        let x = Math.floor(e.clientX / 14)
+        let y = Math.floor(e.clientY / 14)
+        if (account) {
+            invoke({ args: [x, y, 9] });
+        }
+    });
+    /*
+        const onPlay = useCallback(() => {
+            reset();
+            if (account && x && y && color) {
+                invoke({ args: [x - 1, y - 1, color - 1] });
+            }
+        }, [account, x, y, color, invoke, reset]);
+        */
+    function changeBackground(e) {
+        e.target.style.background = 'red';
+    }
+    function changeBackgroundOriginal(e) {
+        e.target.style.background = '#f1ecee';
+    }
+
     return (
-        <div style={{ marging: '0px' }}>
+        <div onClick={onPlay}>
             {megaBoard?.map((val, index) => (
-                <div style={{ display: 'inline-block', width: '14px', height: '14px' }} key={index}>{val.toString()}</div>
+                <div onMouseOver={changeBackground}
+                    onMouseOut={changeBackgroundOriginal} style={{ display: 'inline-block', width: '14px', height: '14px' }} key={index}></div>
             ))}
         </div>
     )
