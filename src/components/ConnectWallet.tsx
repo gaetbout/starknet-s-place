@@ -4,8 +4,7 @@ export function ConnectWallet() {
   const { account, connect, disconnect } = useStarknet()
 
   let accShortened = (() => {
-    if (!account) return ""
-    return (account.slice(0, 5) + "..." + account.slice(account.length - 4, account.length))
+    return (account?.slice(0, 5) + "..." + account?.slice(account.length - 4, account.length))
   });
 
   if (account) {

@@ -45,16 +45,8 @@ export function Board() {
             invoke({ args: [x, y, 9] });
         }
     });
-    /*
-        const onPlay = useCallback(() => {
-            reset();
-            if (account && x && y && color) {
-                invoke({ args: [x - 1, y - 1, color - 1] });
-            }
-        }, [account, x, y, color, invoke, reset]);
-        */
     function changeBackground(e) {
-        e.target.style.background = 'red';
+        e.target.style.background = '#ec1840';
         e.target.style.width = '15px';
         e.target.style.height = '15px';
     }

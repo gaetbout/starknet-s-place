@@ -1,3 +1,11 @@
+:root {
+    --color-red: #ec1840;
+    --color-white: #f1ecee;
+    --color-blue: #2d2d6d;
+    --speed-normal: 0.5s;
+    --speed-fast: 0.3s;
+}
+
 body {
     margin: 0;
     margin-top: 0;
@@ -7,14 +15,6 @@ body {
     box-sizing: border-box;
     background-color: var(--color-white);
     font-family: 'Rubik', sans-serif;
-}
-
-:root {
-    --color-red: #ec1840;
-    --color-white: #f1ecee;
-    --color-blue: #2d2d6d;
-    --speed-normal: 0.5s;
-    --speed-fast: 0.3s;
 }
 
 button {
@@ -50,4 +50,25 @@ button:hover {
     100% {
         background-position-y: -480px;
     }
+}
+
+a {
+    margin-top: 35px;
+    color: var(--color-white);
+}
+
+a:focus,
+a:hover {
+    border-bottom: 1px solid;
+    margin-bottom: 35px;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+}
+
+img {
+    fill: var(--color-white);
 }

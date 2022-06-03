@@ -19,7 +19,11 @@ const Home: NextPage = () => {
         }}>
           < Board /></div>
         <div style={{ backgroundColor: '#2d2d6d', color: '#f1ecee', paddingLeft: '20px', height: '100vh', width: '480px', overflow: 'hidden' }}>
-          <ConnectWallet />
+
+          <div style={{ display: 'flex' }}>
+            <ConnectWallet />
+            <a href="https://github.com/gaetbout/starknet-s-place" target="_blank">Github <img style={{ width: "20px" }} src="/newTab.png"></img></a>
+          </div>
           <Timeleft />
           <h2>Recent Transactions</h2>
           <TransactionList /></div></div>
