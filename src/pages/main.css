@@ -76,9 +76,6 @@ button:hover {
 
 .case:hover {
     background-color: #ec1840;
-    width: var(--square-size-hover);
-    height: var(--square-size-hover);
-    ;
 }
 
 @keyframes animate {

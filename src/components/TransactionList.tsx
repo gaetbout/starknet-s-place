@@ -14,12 +14,15 @@ function TransactionItem({ transaction }: { transaction: Transaction }) {
 export function TransactionList() {
   const { transactions } = useStarknetTransactionManager()
   return (
-    <ul>
-      {transactions.map((transaction, index) => (
-        <li key={index}>
-          <TransactionItem transaction={transaction} />
-        </li>
-      ))}
-    </ul>
+    <div>
+      <h2>Recent Transactions</h2>
+      <ul>
+        {transactions.map((transaction, index) => (
+          <li key={index}>
+            <TransactionItem transaction={transaction} />
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }

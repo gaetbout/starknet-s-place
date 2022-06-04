@@ -24,7 +24,6 @@ const Home: NextPage = () => {
           </div>
           <Timeleft />
           <ColorPicker />
-          <h2>Recent Transactions</h2>
           <TransactionList /></div></div>
     </div >
   )
