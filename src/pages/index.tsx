@@ -9,18 +9,18 @@ import { ColorPicker } from '~/components/ColorPicker/ColorPicker'
 const Home: NextPage = () => {
   const { contract } = useSPlaceContract()
 
-
   return (
-    // TODO ADD GITHUB LINK
     <div >
-      <div style={{ display: 'flex' }}>
+      <div className='flex'>
         <div className='board'>
           < Board /></div>
         <div className='rightMenu'>
 
-          <div style={{ display: 'flex' }}>
+          <div className='flex'>
             <ConnectWallet />
-            <a href="https://github.com/gaetbout/starknet-s-place" target="_blank">Github <img style={{ width: "20px" }} src="/newTab.png"></img></a>
+            <a href="https://github.com/gaetbout/starknet-s-place" target="_blank">Github
+              <img style={{ width: "20px" }} src="/newTab.png"></img>
+            </a>
           </div>
           <Timeleft />
           <ColorPicker />
