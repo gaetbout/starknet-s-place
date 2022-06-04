@@ -8,6 +8,7 @@ export function Board() {
     const { account } = useStarknet()
     const { loading, error, reset, invoke } = useStarknetInvoke({ contract, method: 'play' })
 
+    // TODO can enhance that  fetch, it's quite bad
     const { data: board1Result } = useStarknetCall({
         contract,
         method: 'view_get_board',
@@ -33,9 +34,7 @@ export function Board() {
     }, [board1Result, board2Result, board3Result])
 
     if (!megaBoard) {
-        return <div style={{
-            display: 'flex', justifyContent: 'center', height: '100vh'
-        }}> <img src="/loading.svg" /></div >
+        return <div className='loading'> <img src="/loading.svg" /></div >
     }
 
     const onPlay = ((e) => {
@@ -45,22 +44,12 @@ export function Board() {
             invoke({ args: [x, y, 9] });
         }
     });
-    function changeBackground(e) {
-        e.target.style.background = '#ec1840';
-        e.target.style.width = '15px';
-        e.target.style.height = '15px';
-    }
-    function changeBackgroundOriginal(e) {
-        e.target.style.background = '#f1ecee';
-        e.target.style.width = '14px';
-        e.target.style.height = '14px';
-    }
 
+    // Todo change to handle square side within CSS with a global var
     return (
         <div onClick={onPlay}>
             {megaBoard?.map((val, index) => (
-                <div onMouseOver={changeBackground}
-                    onMouseOut={changeBackgroundOriginal} style={{ display: 'inline-block', width: '14px', height: '14px' }} key={index}></div>
+                <div className='case' key={index}></div>
             ))}
         </div>
     )
