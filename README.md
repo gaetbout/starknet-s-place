@@ -13,6 +13,9 @@ I should be releasing another library to support uint10, uint16, any uint basica
 ## TODO 
 
  + encode all?
+ + redo UI + switch to 5bits encoded value
+ + hover square ==> border 
+ + have a text explaining the game
  + uncompressed and compressed size? ==> not in the contract
  + Refactoring to use the extensibilty/proxy pattern of OZ  https://github.com/OpenZeppelin/cairo-contracts/blob/main/docs/Extensibility.md
 
