@@ -14,8 +14,9 @@ One the current board 120*56 it which makes 6720 points, it is all encoded on 11
 I should be releasing another library to support uint10, uint16, any uint basically!
 
 ## TODO 
- + More interactions: update timeleft every sec (client side), when play is called, set timer to currently playing and already set the tile to the color with animation
+ + More interactions: update timeleft every sec (client side), when play is called: set timer to "currently playing" and already set the tile to the color with some animation, there is an event emitted whenever play is successful
  + Better board ==> could be better done
+ + Loading could be done much faster if loading is parallelize and done by chuncks
  + hover square ==> border 
  + have a text explaining the game
  + uncompressed and compressed size? ==> not in the contract

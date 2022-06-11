@@ -17,6 +17,9 @@ const Home: NextPage = () => {
           <a href="https://github.com/gaetbout/starknet-s-place" target="_blank">Github
             <img style={{ width: "20px" }} src="/newTab.png"></img>
           </a>
+          <a href={'https://goerli.voyager.online/contract/' + contract.address + '#readContract'} target="_blank">Contract
+            <img style={{ width: "20px" }} src="/newTab.png"></img>
+          </a>
         </div>
       </div>
       <div>

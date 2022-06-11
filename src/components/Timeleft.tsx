@@ -30,7 +30,7 @@ export function Timeleft() {
         if (timeleft == 0) {
             return <div>You can play!</div>
         }
-        return <div>~{timeleft}s until you can play</div>
+        return <div> &lt;{timeleft}s until you can play</div>
     }
     return null
 }

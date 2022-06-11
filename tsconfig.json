@@ -28,8 +28,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "components/ColorPicker/ColorPickerJS.js"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

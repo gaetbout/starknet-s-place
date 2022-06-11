@@ -13,11 +13,12 @@ export function Board() {
     const { data: board1Result } = useStarknetCall({
         contract,
         method: 'view_get_board',
-        args: [0, 110], // Could use the offset to load chunk by chunk and get it faster
+        args: [0, 111], // Could use the offset to load chunk by chunk and get it faster
     })
 
     const board = useMemo(() => {
         if (board1Result && board1Result.length > 0) {
+            console.log(board1Result.arr)
             return (board1Result.arr)
         }
     }, [board1Result])
@@ -37,6 +38,7 @@ export function Board() {
             invoke({ args: [x, y, getColorIndex] });
         }
     });
+
     function changeBackground(e) {
         e.target.style.background = defaultPalette[getColorIndex];
     }
