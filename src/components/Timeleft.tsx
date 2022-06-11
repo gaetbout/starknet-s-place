@@ -18,7 +18,7 @@ export function Timeleft() {
     }, [data]);
 
     if (!account) {
-        return null
+        return <div>Please connect</div>
     }
     if (loading) {
         return <div>Timeleft loading</div>

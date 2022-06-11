@@ -6,13 +6,13 @@ from starkware.cairo.common.math_cmp import is_le
 from starkware.cairo.common.math import assert_le, assert_not_zero, unsigned_div_rem
 from starkware.cairo.common.bool import TRUE
 from starkware.cairo.common.memcpy import memcpy
-from contracts.uint8_packed import view_set_element_at, decompose
+from contracts.uint4_packed import view_set_element_at, decompose
 
 const ELAPSED_TIME = 300  # 5mns
 const X_MAX = 99
 const Y_MAX = 99
-const COLOR_MAX = 255
-const MAX_COLOR_PER_FELT = 31
+const COLOR_MAX = 15
+const MAX_COLOR_PER_FELT = 62
 
 @storage_var
 func adress_player_timestamp_storage(address) -> (timestamp):
