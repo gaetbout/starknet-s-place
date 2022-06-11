@@ -8,11 +8,14 @@ What about uint8, uint16, ...
 
 To demonstrate this is working I tried to make a simple proof of concept based on the [reddit game: r/place](https://www.reddit.com/r/place/).  
 It follow the same simple rule which is that a user can put a pixel every 5 minutes. For memory reason, I had to limit the colors to be encoded to 4 bits (which provides 16 colors).  
-Therefore it allows to encore 61 colors per felt!
+Therefore it allows to encore 61 colors per felt!  
+One the current board 120*56 it which makes 6720 points, it is all encoded on 111 felts.
 
 I should be releasing another library to support uint10, uint16, any uint basically!
-## TODO 
 
+## TODO 
+ + More interactions: update timeleft every sec (client side), when play is called, set timer to currently playing and already set the tile to the color with animation
+ + Better board ==> could be better done
  + hover square ==> border 
  + have a text explaining the game
  + uncompressed and compressed size? ==> not in the contract
