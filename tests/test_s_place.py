@@ -61,8 +61,10 @@ async def test_view_get_player_timeleft_player_play(starknet, contract, user_add
     (10, 0, 0, 10),
     (60, 0, 0, 60),
     (61, 0, 1, 0),
+    (119, 0, 1, 58),
     (0, 1, 1, 59),
     (1, 1, 1, 60),
+    (2, 1, 2, 0),
     (2, 2, 3, 59),
     (119, 55, 110, 9), # Last position
 ])
@@ -70,6 +72,42 @@ async def test_play(contract, user_address, x, y, offset, position):
     await contract.play(x, y, VALID_NR).invoke(caller_address=user_address)
     execution_info = await contract.view_get_board(offset, 1).invoke()
     assert len(execution_info.result.arr) == 61
+    print(execution_info.result.arr)
+    assert execution_info.result.arr[position] == VALID_NR
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("x, y, position",[
+    (0, 0, 0), # First position
+    (10, 0, 10),
+    (60, 0, 60),
+    (61, 0, 61),
+    (119, 0, 119),
+    (0, 1, 120),
+    (1, 1, 121),
+    (2, 1, 122),
+    (2, 2, 242)
+])
+async def test_play_without_offset(contract, user_address, x, y, position):
+    await contract.play(x, y, VALID_NR).invoke(caller_address=user_address)
+    execution_info = await contract.view_get_board(0, 4).invoke()
+    assert len(execution_info.result.arr) == 244
+    print(execution_info.result.arr)
+    assert execution_info.result.arr[position] == VALID_NR
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("x, y, position",[
+    (61, 0, 0),
+    (119, 0, 58),
+    (0, 1, 59),
+    (1, 1, 60),
+    (2, 1, 61),
+    (2, 2, 181)
+])
+async def test_play_offset_1(contract, user_address, x, y, position):
+    await contract.play(x, y, VALID_NR).invoke(caller_address=user_address)
+    execution_info = await contract.view_get_board(1, 3).invoke()
+    assert len(execution_info.result.arr) == 183
     print(execution_info.result.arr)
     assert execution_info.result.arr[position] == VALID_NR
 

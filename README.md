@@ -13,8 +13,6 @@ Therefore it allows to encore 61 colors per felt!
 I should be releasing another library to support uint10, uint16, any uint basically!
 ## TODO 
 
- + encode all?
- + redo UI + switch to 5bits encoded value
  + hover square ==> border 
  + have a text explaining the game
  + uncompressed and compressed size? ==> not in the contract

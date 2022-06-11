@@ -1,6 +1,6 @@
 import { useStarknet, useStarknetCall } from '@starknet-react/core'
-import React, { useMemo } from 'react'
-import { useSPlaceContract } from '~/hooks/s_place'
+import React, { useMemo, useEffect } from 'react'
+import { useSPlaceContract, } from '~/hooks/s_place'
 
 export function Timeleft() {
     const { account } = useStarknet()
@@ -11,7 +11,7 @@ export function Timeleft() {
         args: account ? [account] : undefined,
     });
 
-    const timeleft = useMemo(() => {
+    let timeleft = useMemo(() => {
         if (data && data.length > 0) {
             return data[0].toString()
         }
@@ -30,7 +30,7 @@ export function Timeleft() {
         if (timeleft == 0) {
             return <div>You can play!</div>
         }
-        return <div>{timeleft}s until you can play</div>
+        return <div>~{timeleft}s until you can play</div>
     }
     return null
 }

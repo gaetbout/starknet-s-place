@@ -13,7 +13,7 @@ export function Board() {
     const { data: board1Result } = useStarknetCall({
         contract,
         method: 'view_get_board',
-        args: [0, 110],
+        args: [0, 110], // Could use the offset to load chunk by chunk and get it faster
     })
 
     const board = useMemo(() => {
@@ -51,14 +51,13 @@ export function Board() {
                     <div style={{ backgroundColor: val }} onClick={() => setColorIndex(index)} className='colorPicker' key={val}> </div>
                 ))}
             </div>
-            <div className='board'> < div onClick={onPlay} >
+            < div className='board' onClick={onPlay} >
                 {board?.map((val, index) => (
                     <div onMouseOver={changeBackground}
                         onMouseOut={(e) => changeBackgroundOriginal(e, defaultPalette[val])}
                         style={{ backgroundColor: defaultPalette[val] }} className='case' key={index}></div>
                 ))
                 }
-            </div >
             </div >
         </div>
     )
