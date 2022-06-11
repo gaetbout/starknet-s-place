@@ -9,10 +9,10 @@ from starkware.cairo.common.memcpy import memcpy
 from contracts.uint4_packed import view_set_element_at, decompose
 
 const ELAPSED_TIME = 300  # 5mns
-const X_MAX = 99
-const Y_MAX = 99
+const X_MAX = 119
+const Y_MAX = 55
 const COLOR_MAX = 15
-const MAX_COLOR_PER_FELT = 62
+const MAX_COLOR_PER_FELT = 61
 
 @storage_var
 func adress_player_timestamp_storage(address) -> (timestamp):
@@ -86,7 +86,7 @@ func play{
     assert_player_can_play_valid(caller_address)
     let (current_timestamp) = get_block_timestamp()
     adress_player_timestamp_storage.write(caller_address, current_timestamp)
-    let position = (y * (Y_MAX + 1)) + x
+    let position = (y * (X_MAX + 1)) + x
     let (quotient, remainder) = unsigned_div_rem(position, MAX_COLOR_PER_FELT)
     let (current_felt_stored) = position_colors_storage.read(quotient)
     let (new_felt_to_store) = view_set_element_at(current_felt_stored, remainder, color)

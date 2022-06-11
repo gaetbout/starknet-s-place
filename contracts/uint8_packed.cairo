@@ -9,7 +9,7 @@ from contracts.pow2 import pow2
 const SIZE = 8
 const ALL_ONES = 2 ** 251 - 1
 const MAX = 252
-const MAX_PER_FELT = 31
+const MAX_PER_FELT = 31  # 251 // 8
 
 @view
 func view_get_element_at{

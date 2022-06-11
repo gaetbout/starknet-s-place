@@ -45,9 +45,10 @@ button {
 .board {
     margin: auto;
     width: 1680px;
-    height: 700px;
+    height: 784px;
     cursor: none;
-    line-height: 60%
+    line-height: 60%;
+    overflow: hidden;
 }
 
 .colorPicker {

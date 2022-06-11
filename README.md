@@ -7,7 +7,8 @@ But why not going smaller?
 What about uint8, uint16, ... 
 
 To demonstrate this is working I tried to make a simple proof of concept based on the [reddit game: r/place](https://www.reddit.com/r/place/).  
-It follow the same simple rule which is that a user can put a pixel every 5 minutes. For memory reason, I had to limit the colors to be encoded to 8 bits (which provides 256 colors).
+It follow the same simple rule which is that a user can put a pixel every 5 minutes. For memory reason, I had to limit the colors to be encoded to 4 bits (which provides 16 colors).  
+Therefore it allows to encore 61 colors per felt!
 
 I should be releasing another library to support uint10, uint16, any uint basically!
 ## TODO 

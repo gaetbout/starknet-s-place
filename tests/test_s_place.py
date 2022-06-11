@@ -3,7 +3,7 @@ import pytest
 from utils import assert_revert, set_block_timestamp, assert_event_emitted
 
 CONTRACT_FILE = os.path.join("contracts", "s_place.cairo")
-VALID_NR = 9
+VALID_NR = 3
 pytest.user_address = 100
 X = 99
 
@@ -26,15 +26,14 @@ async def test_view_get_player_timeleft_player_didnt_play(contract, user_address
 @pytest.mark.asyncio
 async def test_view_total_amount_of_batches(contract):
     execution_info = await contract.view_total_number_of_felt().invoke()
-    assert execution_info.result.total_number_of_felt == 323
+    assert execution_info.result.total_number_of_felt == 111
 
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("offset, batch_size, response",[
-    (0, 10, 310),
-    (0, 100, 3100),
-    (100, 100, 3100),
-    (100, 150, 4650),
+    (0, 10, 610),
+    (0, 100, 6100),
+    (100, 100, 6100),
 ])
 async def test_view_get_board(contract, offset, batch_size, response):
     execution_info = await contract.view_get_board(offset, batch_size).invoke()
@@ -60,17 +59,17 @@ async def test_view_get_player_timeleft_player_play(starknet, contract, user_add
 @pytest.mark.parametrize("x, y, offset, position",[
     (0, 0, 0, 0), # First position
     (10, 0, 0, 10),
-    (30, 0, 0, 30),
-    (31, 0, 1, 0),
-    (0, 1, 3, 7),
-    (1, 1, 3, 8),
-    (2, 2, 6, 16),
-    (99, 99, 322, 17), # Last position
+    (60, 0, 0, 60),
+    (61, 0, 1, 0),
+    (0, 1, 1, 59),
+    (1, 1, 1, 60),
+    (2, 2, 3, 59),
+    (119, 55, 110, 9), # Last position
 ])
 async def test_play(contract, user_address, x, y, offset, position):
     await contract.play(x, y, VALID_NR).invoke(caller_address=user_address)
     execution_info = await contract.view_get_board(offset, 1).invoke()
-    assert len(execution_info.result.arr) == 31
+    assert len(execution_info.result.arr) == 61
     print(execution_info.result.arr)
     assert execution_info.result.arr[position] == VALID_NR
 
@@ -92,8 +91,8 @@ async def test_play_color_invalid(contract):
 
 @pytest.mark.asyncio
 async def test_play_x_invalid(contract):
-    await assert_revert(contract.play(100,VALID_NR,VALID_NR).invoke(), "Invalid x: out of bounds")
+    await assert_revert(contract.play(120,VALID_NR,VALID_NR).invoke(), "Invalid x: out of bounds")
 
 @pytest.mark.asyncio
 async def test_play_y_invalid(contract):
-    await assert_revert(contract.play(VALID_NR,100,VALID_NR).invoke(), "Invalid y: out of bounds")
+    await assert_revert(contract.play(VALID_NR,56,VALID_NR).invoke(), "Invalid y: out of bounds")
