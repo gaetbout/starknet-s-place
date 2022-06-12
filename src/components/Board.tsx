@@ -12,11 +12,11 @@ export function Board() {
     const [getColorIndex, setColorIndex] = useState(0);
     const { account } = useStarknet()
     const { loading, error, reset, invoke } = useStarknetInvoke({ contract, method: 'play' })
-    const board1Result = useStarknetCall({
+    const { data: board1Result } = useStarknetCall({
         contract,
         method: 'view_get_board',
         args: [0, 111], // Could use the offset to load chunk by chunk and get it faster
-    }).data
+    })
 
     const board = useMemo(() => {
         if (board1Result && board1Result.length > 0) {
