@@ -27,6 +27,7 @@ I should be releasing another library to support uint10, uint16, any smaller uin
  + have a text explaining the game
  + uncompressed and compressed size? ==> not in the contract
  + Refactoring to use the extensibilty/proxy pattern of OZ  https://github.com/OpenZeppelin/cairo-contracts/blob/main/docs/Extensibility.md
+ + Should fix: https://github.com/gaetbout/starknet-s-place/commit/833eb472a3535156c9b4437cced962eecfaacda2 instead of ignore it
 
 ## 🌡️ Test
 
