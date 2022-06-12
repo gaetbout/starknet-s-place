@@ -6,6 +6,6 @@ import RPlace from '~/abi/s_place.json'
 export function useSPlaceContract() {
     return useContract({
         abi: RPlace as Abi,
-        address: '0x071701106eb292fd1a2404431bd40350f5c77337d9fc3375ec9b5869fb197a8a',
+        address: '0x03880c03b741321318e54ab1012758fc553c31de8c0e153ff35e1904984c21a9',
     })
 }

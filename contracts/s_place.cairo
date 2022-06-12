@@ -12,7 +12,7 @@ const ELAPSED_TIME = 300  # 5mns
 const X_MAX = 119
 const Y_MAX = 55
 const COLOR_MAX = 15
-const MAX_COLOR_PER_FELT = 61
+const MAX_COLOR_PER_FELT = 62
 
 @storage_var
 func adress_player_timestamp_storage(address) -> (timestamp):
@@ -28,8 +28,7 @@ end
 
 @view
 func view_get_player_timeleft{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
-    address
-) -> (timestamp):
+        address) -> (timestamp):
     alloc_locals
     let (player_last_timestamp) = adress_player_timestamp_storage.read(address)
     let (current_timestamp) = get_block_timestamp()
@@ -42,26 +41,25 @@ end
 
 @view
 func view_total_number_of_felt{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
-    ) -> (total_number_of_felt):
+        ) -> (total_number_of_felt):
     let (total_number_of_felt, _) = unsigned_div_rem(
-        ((X_MAX + 1) * (Y_MAX + 1)), MAX_COLOR_PER_FELT
-    )
+        ((X_MAX + 1) * (Y_MAX + 1)), MAX_COLOR_PER_FELT)
     return (total_number_of_felt + 1)
 end
 
 # Had to make an offset/batch because otherwise it takes too much steps
 @view
 func view_get_board{
-    bitwise_ptr : BitwiseBuiltin*, syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr
-}(offset, batch_size) -> (arr_len, arr : felt*):
+        bitwise_ptr : BitwiseBuiltin*, syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
+        range_check_ptr}(offset, batch_size) -> (arr_len, arr : felt*):
     alloc_locals
     let (local arr : felt*) = alloc()
     return view_get_board_recursive(offset, offset + batch_size, 0, arr)
 end
 
 func view_get_board_recursive{
-    bitwise_ptr : BitwiseBuiltin*, syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr
-}(current_index, loop_max, arr_len, arr : felt*) -> (arr_len, arr : felt*):
+        bitwise_ptr : BitwiseBuiltin*, syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
+        range_check_ptr}(current_index, loop_max, arr_len, arr : felt*) -> (arr_len, arr : felt*):
     alloc_locals
     if current_index == loop_max:
         return (arr_len, arr)
@@ -70,14 +68,13 @@ func view_get_board_recursive{
     let (arr_current_index_len, arr_current_index) = decompose(felt_to_decompose)
     memcpy(arr + arr_len, arr_current_index, arr_current_index_len)
     return view_get_board_recursive(
-        current_index + 1, loop_max, arr_len + arr_current_index_len, arr
-    )
+        current_index + 1, loop_max, arr_len + arr_current_index_len, arr)
 end
 
 @external
 func play{
-    bitwise_ptr : BitwiseBuiltin*, syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr
-}(x, y, color):
+        bitwise_ptr : BitwiseBuiltin*, syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
+        range_check_ptr}(x, y, color):
     alloc_locals
     assert_color_valid(color)
     assert_x_valid(x)
@@ -116,8 +113,7 @@ func assert_y_valid{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_chec
     return ()
 end
 func assert_player_can_play_valid{
-    syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr
-}(address):
+        syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(address):
     with_attr error_message("Invalid address: zero address"):
         assert_not_zero(address)
     end
