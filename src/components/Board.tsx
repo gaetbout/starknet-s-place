@@ -12,19 +12,32 @@ export function Board() {
     const [getColorIndex, setColorIndex] = useState(0);
     const { account } = useStarknet()
     const { loading, error, reset, invoke } = useStarknetInvoke({ contract, method: 'play' })
+
     const { data: board1Result } = useStarknetCall({
         contract,
         method: 'view_get_board',
-        args: [0, 111], // Could use the offset to load chunk by chunk and get it faster
+        args: [0, 37],
     })
 
-    const board = useMemo(() => {
-        if (board1Result && board1Result.length > 0) {
-            return (board1Result[0])
-        }
-    }, [board1Result])
+    const { data: board2Result } = useStarknetCall({
+        contract,
+        method: 'view_get_board',
+        args: [37, 37],
+    })
 
-    if (!board) {
+    const { data: board3Result } = useStarknetCall({
+        contract,
+        method: 'view_get_board',
+        args: [74, 37],
+    })
+
+    const megaBoard = useMemo(() => {
+        if (board1Result && board1Result.length > 0 && board2Result && board2Result.length > 0 && board3Result && board3Result.length > 0) {
+            return (board1Result.arr.concat(board2Result.arr).concat(board3Result.arr))
+        }
+    }, [board1Result, board2Result, board3Result])
+
+    if (!megaBoard) {
         return <div className='loading'> <img src="/loading.svg" /></div >
     }
 
@@ -55,7 +68,7 @@ export function Board() {
                 ))}
             </div>
             < div className='board' onClick={onPlay} >
-                {board?.map((val, index) => (
+                {megaBoard?.map((val, index) => (
                     <div onMouseOver={changeBackground}
                         onMouseOut={(e) => changeBackgroundOriginal(e, defaultPalette[val])}
                         style={{ backgroundColor: defaultPalette[val] }} className='case' key={index}></div>

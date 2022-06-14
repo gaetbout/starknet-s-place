@@ -53,8 +53,8 @@ button {
 
 .colorPicker {
     width: 105px;
-    height: 50px;
-    margin-bottom: 20px;
+    height: 40px;
+    margin-bottom: 10px;
 }
 
 .colorPicker:hover {
@@ -87,6 +87,7 @@ button:hover {
     width: var(--square-size);
     height: var(--square-size);
 }
+
 
 @keyframes animate {
     0% {
