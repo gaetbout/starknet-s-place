@@ -33,7 +33,7 @@ export function Board() {
 
     const megaBoard = useMemo(() => {
         if (board1Result && board1Result.length > 0 && board2Result && board2Result.length > 0 && board3Result && board3Result.length > 0) {
-            return (board1Result.arr.concat(board2Result.arr).concat(board3Result.arr))
+            return ((board1Result as any).arr.concat((board2Result as any).arr).concat((board3Result as any).arr))
         }
     }, [board1Result, board2Result, board3Result])
 
