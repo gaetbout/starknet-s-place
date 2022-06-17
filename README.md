@@ -18,7 +18,7 @@ Therefore it allows to encode:
 62 colors per felt!  
 One the current board 120*56 it which makes 6720 coordinates, it is all encoded on 109 felts.
 
-The library is accessible [here](https://github.com/gaetbout/starknet-felt-packing)
+The library is accessible [here](https://github.com/gaetbout/starknet-felt-packing) with some more technical explanation on how I achieved it.
 
 ## TODO 
  + More interactions: update timeleft every sec (client side), when play is called: set timer to "currently playing" and already set the tile to the color with some animation, there is an event emitted whenever play is successful
