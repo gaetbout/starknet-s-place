@@ -1,6 +1,7 @@
 # starknet-s-place
 ![Tests](https://github.com/gaetbout/starknet-s-place/actions/workflows/nile-tests.yml/badge.svg)
-#Important note 
+
+# Important note 
 
 This is a Work In Progress and will have to be updated to use: https://github.com/gaetbout/starknet-felt-packing
 
